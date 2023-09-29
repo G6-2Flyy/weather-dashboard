@@ -1,0 +1,13 @@
+header {
+    background-image: linear-gradient(to right, rgb(45, 93, 207), rgb(19, 19, 84));
+}
+
+#history button{
+    background-color: #bcb8b8 !important;
+}
+
+#five-day-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
