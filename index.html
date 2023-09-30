@@ -21,14 +21,14 @@
         <div class="col-3 p-2">
           <h2>Search for a city:</h2>
           <div class="mb-3">
-            <input
+            <input id="user-input"
               class="form-control form-control-lg border border-3 border-dark-subtle"
               type="text"
               placeholder="Enter a city"
             />
           </div>
           <div class="d-grid gap-2">
-            <button class="btn btn-lg btn-primary" type="button">Search</button>
+            <button id="search-btn" class="btn btn-lg btn-primary" type="button">Search</button>
           </div>
           <hr />
           <div id="history" class="d-grid gap-2">
@@ -56,59 +56,64 @@
           </div>
         </div>
         <div class="col-9 alert alert-secondary p-2">
-          <div class="card" style="width: 18rem">
-            <div class="card-body col-9">
-              <h5 class="card-title">Dallas</h5>
-              <p class="card-text">Date</p>
-              <p class="card-text">Icon</p>
-              <p class="card-text">Temp:</p>
-              <p class="card-text">Wind:</p>
-              <p class="card-text">Humidity:</p>
+          <div class="border border-dark border-2">
+            <div id="current-weather-container" class="card-body col-9">
+              <h2 class="card-title">
+                <span id="city-title"></span>
+                <span id="current-date" class="card-text"></span>
+                <img id="current-weather-icon" class="card-text" src="">
+              </h2>
+              <p id="current-temp" class="card-text">Temp: </p>
+              <p id="current-wind" class="card-text">Wind: </p>
+              <p id="current-humidity" class="card-text">Humidity: </p>
             </div>
           </div>
 
-          <section id="five-day-container">
-            <div>
-              <div class="card" style="width: 18rem">
+          <section id="five-day-container" class="d-flex justify-content-between">
+              <div class="card" style="width: 18%">
                 <div class="card-body">
-                  <h5 class="card-title">Date</h5>
-                  <p class="card-text">Temp:</p>
-                  <p class="card-text">Wind:</p>
-                  <p class="card-text">Humidity:</p>
+                    <h5 id="date-out-1-day" class="card-title">Date</h5>
+                    <img id="icon-out-1-day" src="">
+                    <p id="temp-out-1-day"class="card-text">Temp:</p>
+                    <p id="wind-out-1-day"class="card-text">Wind:</p>
+                    <p id="humidity-out-1-day" class="card-text">Humidity:</p>
                 </div>
               </div>
-            </div>
 
-            <div class="card" style="width: 18rem">
+            <div class="card" style="width: 18%">
               <div class="card-body">
-                <h5 class="card-title">Date</h5>
-                <p class="card-text">Temp:</p>
-                <p class="card-text">Wind:</p>
-                <p class="card-text">Humidity:</p>
+                <h5 id="date-out-2-day" class="card-title">Date</h5>
+                <img id="icon-out-2-day" src="">
+                <p id="temp-out-2-day"class="card-text">Temp:</p>
+                <p id="wind-out-2-day"class="card-text">Wind:</p>
+                <p id="humidity-out-2-day" class="card-text">Humidity:</p>
               </div>
             </div>
-            <div class="card" style="width: 18rem">
+            <div class="card" style="width: 18%">
               <div class="card-body">
-                <h5 class="card-title">Date</h5>
-                <p class="card-text">Temp:</p>
-                <p class="card-text">Wind:</p>
-                <p class="card-text">Humidity:</p>
+                <h5 id="date-out-3-day" class="card-title">Date</h5>
+                <img id="icon-out-3-day" src="">
+                <p id="temp-out-3-day"class="card-text">Temp:</p>
+                <p id="wind-out-3-day"class="card-text">Wind:</p>
+                <p id="humidity-out-3-day" class="card-text">Humidity:</p>
               </div>
             </div>
-            <div class="card" style="width: 18rem">
+            <div class="card" style="width: 18%">
               <div class="card-body">
-                <h5 class="card-title">Date</h5>
-                <p class="card-text">Temp:</p>
-                <p class="card-text">Wind:</p>
-                <p class="card-text">Humidity:</p>
+                <h5 id="date-out-4-day" class="card-title">Date</h5>
+                <img id="icon-out-4-day" src="">
+                <p id="temp-out-4-day"class="card-text">Temp:</p>
+                <p id="wind-out-4-day"class="card-text">Wind:</p>
+                <p id="humidity-out-4-day" class="card-text">Humidity:</p>
               </div>
             </div>
-            <div class="card" style="width: 18rem">
+            <div class="card" style="width: 18%">
               <div class="card-body">
-                <h5 class="card-title">Date</h5>
-                <p class="card-text">Temp:</p>
-                <p class="card-text">Wind:</p>
-                <p class="card-text">Humidity:</p>
+                <h5 id="date-out-5-day" class="card-title">Date</h5>
+                <img id="icon-out-5-day" src="">
+                <p id="temp-out-5-day"class="card-text">Temp:</p>
+                <p id="wind-out-5-day"class="card-text">Wind:</p>
+                <p id="humidity-out-5-day" class="card-text">Humidity:</p>
               </div>
             </div>
           </section>
