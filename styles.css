@@ -11,3 +11,8 @@ header {
     flex-direction: row;
     justify-content: space-evenly;
 }
+
+.card {
+    background-color: darkblue;
+    color: white;
+}
