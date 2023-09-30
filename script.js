@@ -1,5 +1,4 @@
-let lat = 0;
-let lon = 0;
+
 
 
 const searchBtn = document.getElementById('search-btn')
@@ -7,9 +6,38 @@ const searchBtn = document.getElementById('search-btn')
 function handleClick() {
     let cityName = document.getElementById('user-input').value
     getCoordinates(cityName)
-    setTimeout(() => {
-        getFutureWeather(lat, lon)
-      }, "1000");
+    saveToStorage(cityName);
+    showHistory();
+}
+
+function saveToStorage(city) {
+    var cities = getFromStorage();
+    cities.unshift(city)
+    localStorage.setItem('cities', JSON.stringify(cities))
+}
+
+function getFromStorage() {
+    return JSON.parse(localStorage.getItem('cities'))|| []
+}
+
+function showHistory() {
+    var cities = getFromStorage();
+    var htmlBtns = "";
+    for (let i = 0; i < cities.length; i++) {
+        const city = cities[i];
+        htmlBtns+= `
+        <button class="btn btn-lg btn-secondary text-black" type="button">
+        ${city}
+      </button>
+        `
+    } 
+    document.querySelector('#history').innerHTML= htmlBtns;
+    document.querySelectorAll('#history button').forEach(function(btn){
+        btn.addEventListener('click', function(event) {
+            var city = event.target.innerText
+            getCoordinates(city);
+        })
+    })
 }
 
 function getCoordinates(cityName) {
@@ -18,8 +46,9 @@ function getCoordinates(cityName) {
         return response.json()
     })
     .then(function(data) {
-        lat = data.coord.lat;
-        lon = data.coord.lon;
+        var lat = data.coord.lat;
+        var lon = data.coord.lon;
+        getFutureWeather(lat, lon)
        getCurrentWeather(data, cityName);
     })
 }
@@ -33,11 +62,11 @@ function getCurrentWeather(cData, city) {
     let currentIcon = document.getElementById('current-weather-icon').src="https://openweathermap.org/img/w/"+ cData.weather[0].icon +".png"
     currentIcon.textContent = cData.weather[0].icon 
     let currentTemp = document.getElementById('current-temp')
-    currentTemp.textContent = `Temp: ${cData.main.temp}`
+    currentTemp.innerHTML = `Temp: ${cData.main.temp} &#8457`
     let currentHumidity = document.getElementById('current-humidity')
-    currentHumidity.textContent = `Humidity: ${cData.main.humidity}`
+    currentHumidity.innerHTML = `Humidity: ${cData.main.humidity} &#x25`
     let currentWindSpeed = document.getElementById('current-wind')
-    currentWindSpeed.textContent = `Wind: ${cData.wind.speed}`
+    currentWindSpeed.innerText = `Wind: ${cData.wind.speed} MPH`
 }
 
 function getFutureWeather(lat, lon) {
@@ -77,7 +106,7 @@ function displayFutureTemp(...data) {
     for (let day=0; day<data.length; day++) {
         let daysOut = day + 1;
         let temperature =data[day].main.temp;
-        document.getElementById(`temp-out-${daysOut}-day`).textContent = temperature;
+        document.getElementById(`temp-out-${daysOut}-day`).innerHTML = `Temp: ${temperature} &#8457`;
     }
 }
 
@@ -85,7 +114,7 @@ function displayFutureHumidity(...data) {
     for (let day=0; day<data.length; day++) {
         let daysOut = day + 1;
         let humidity =data[day].main.humidity;
-        document.getElementById(`humidity-out-${daysOut}-day`).textContent = humidity;
+        document.getElementById(`humidity-out-${daysOut}-day`).innerHTML = `Humidity: ${humidity} &#x25`;
     }
 }
 
@@ -93,7 +122,7 @@ function displayFutureWind(...data) {
     for (let day=0; day<data.length; day++) {
         let daysOut = day + 1;
         let wind = data[day].wind.speed;
-        document.getElementById(`wind-out-${daysOut}-day`).textContent = wind;
+        document.getElementById(`wind-out-${daysOut}-day`).innerText = `Wind: ${wind} MPH`;
     }
 }
 
@@ -114,3 +143,5 @@ function dateFormatting(date) {
 }
 
 searchBtn.addEventListener("click", handleClick)
+
+showHistory();
