@@ -8,7 +8,9 @@ function handleClick() {
     getCoordinates(cityName)
     saveToStorage(cityName);
     showHistory();
+    document.getElementById('user-input').value = ""
 }
+
 
 function saveToStorage(city) {
     var cities = getFromStorage();
