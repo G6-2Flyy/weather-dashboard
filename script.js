@@ -52,6 +52,7 @@ function getCoordinates(cityName) {
         var lon = data.coord.lon;
         getFutureWeather(lat, lon)
        getCurrentWeather(data, cityName);
+       showCityImage(cityName);
     })
 }
 //fetching current weather
@@ -143,6 +144,20 @@ function dateFormatting(date) {
     let dateFormatted = new Intl.DateTimeFormat('en-US').format(unixDate);
     return dateFormatted;
 }
+
+function showCityImage(city) {
+    city = city.split(" ").join("-");
+    fetch(`https://api.teleport.org/api/urban_areas/slug:${city.toLowerCase()}/images/`)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        let image = data.photos[0].image.web;
+        document.querySelector('#image').style.backgroundImage = `url(${image})`;
+    })
+} 
+
+
 
 searchBtn.addEventListener("click", handleClick)
 
