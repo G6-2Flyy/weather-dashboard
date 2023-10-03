@@ -25,8 +25,10 @@ This project uses a third-party API to access weather data from openweathermap.o
 6. Refresh the page.
 7. Notice the activities are stored locally.
 8. Click on a previously searched city to get updated weather data..
+
+Site: 
    
-![alt text](./images/weather_dashboard.png)
+![alt text](./images/weather_dashboard_screenshot.png)
 
 ## Credits
 
@@ -53,4 +55,3 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 - URL/Web address
 - GUI
 - Local storage
-
