@@ -26,7 +26,7 @@ This project uses a third-party API to access weather data from openweathermap.o
 7. Notice the activities are stored locally.
 8. Click on a previously searched city to get updated weather data..
 
-Site: 
+Site: https://g6-2flyy.github.io/weather-dashboard/
    
 ![alt text](./images/weather_dashboard_screenshot.png)
 
